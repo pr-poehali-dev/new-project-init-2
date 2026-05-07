@@ -368,6 +368,121 @@ export default function Index() {
         </div>
       </section>
 
+      {/* ===== FEATURES BENTO ===== */}
+      <section id="features" className="py-20 px-4 md:px-8" style={{ backgroundColor: "#F7FAF8" }}>
+        <div className="max-w-6xl mx-auto">
+          <div className="text-center mb-12">
+            <span className="text-xs font-bold uppercase tracking-widest mb-4 block" style={{ color: "#34B86D" }}>Возможности платформы</span>
+            <h2 className="font-display text-3xl md:text-4xl font-bold" style={{ color: "#1B1F28" }}>
+              Как NOVATECH закрывает потери бизнеса?
+            </h2>
+          </div>
+
+          {/* Bento grid */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+
+            {/* Row 1 */}
+            {/* Card 1 — CRM — тёмная с иконкой */}
+            <div className="rounded-3xl p-8 flex flex-col justify-between min-h-[220px]" style={{ backgroundColor: "#232D45" }}>
+              <div className="w-12 h-12 rounded-2xl flex items-center justify-center mb-6" style={{ backgroundColor: "rgba(255,255,255,0.08)" }}>
+                <Icon name="MessageSquare" size={22} style={{ color: "#CBD5E1" }} />
+              </div>
+              <div>
+                <h3 className="font-bold text-xl text-white mb-2">CRM и коммуникации</h3>
+                <p className="text-sm leading-relaxed" style={{ color: "#8DA3B4" }}>Все обращения, звонки и сообщения в одной системе для удобного контроля.</p>
+              </div>
+            </div>
+
+            {/* Card 2 — широкая тёмная без текста, с UI-превью */}
+            <div className="rounded-3xl overflow-hidden min-h-[220px] relative" style={{ backgroundColor: "#232D45" }}>
+              {/* UI-превью: мини CRM-дашборд */}
+              <div className="absolute inset-0 p-5 flex flex-col gap-2">
+                <div className="flex items-center gap-2 mb-1">
+                  <div className="w-2 h-2 rounded-full" style={{ backgroundColor: "#34B86D" }} />
+                  <span className="text-xs font-semibold" style={{ color: "#7BD9A1" }}>Воронка продаж</span>
+                </div>
+                {[
+                  { label: "Новые заявки", val: 48, color: "#3B82F6", pct: "100%" },
+                  { label: "В работе", val: 31, color: "#8B5CF6", pct: "65%" },
+                  { label: "Оплачено", val: 19, color: "#34B86D", pct: "40%" },
+                  { label: "Повторные", val: 12, color: "#F59E0B", pct: "25%" },
+                ].map(row => (
+                  <div key={row.label}>
+                    <div className="flex justify-between text-xs mb-0.5" style={{ color: "#8DA3B4" }}>
+                      <span>{row.label}</span><span style={{ color: "#CBD5E1" }}>{row.val}</span>
+                    </div>
+                    <div className="h-1.5 rounded-full w-full" style={{ backgroundColor: "rgba(255,255,255,0.06)" }}>
+                      <div className="h-1.5 rounded-full" style={{ backgroundColor: row.color, width: row.pct }} />
+                    </div>
+                  </div>
+                ))}
+                <div className="flex gap-2 mt-auto">
+                  <div className="flex-1 rounded-xl p-2.5 text-center" style={{ backgroundColor: "rgba(52,184,109,0.12)", border: "1px solid rgba(52,184,109,0.2)" }}>
+                    <div className="text-base font-bold" style={{ color: "#7BD9A1" }}>+32%</div>
+                    <div className="text-xs" style={{ color: "#8DA3B4" }}>конверсия</div>
+                  </div>
+                  <div className="flex-1 rounded-xl p-2.5 text-center" style={{ backgroundColor: "rgba(59,130,246,0.1)", border: "1px solid rgba(59,130,246,0.2)" }}>
+                    <div className="text-base font-bold" style={{ color: "#93C5FD" }}>150+</div>
+                    <div className="text-xs" style={{ color: "#8DA3B4" }}>клиентов</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Card 3 — светлая с иконкой */}
+            <div className="rounded-3xl p-8 flex flex-col justify-between min-h-[220px]" style={{ backgroundColor: "#FFFFFF", border: "1px solid #E8F0EB" }}>
+              <div className="w-12 h-12 rounded-2xl flex items-center justify-center mb-6" style={{ backgroundColor: "#F0F4F8" }}>
+                <Icon name="CalendarDays" size={22} style={{ color: "#7C98B6" }} />
+              </div>
+              <div>
+                <h3 className="font-bold text-xl mb-2" style={{ color: "#1B1F28" }}>Федя и ЭМК</h3>
+                <p className="text-sm leading-relaxed" style={{ color: "#667085" }}>Помогает врачу оформить карту и план лечения быстрее и без ошибок.</p>
+              </div>
+            </div>
+
+            {/* Row 2 */}
+            {/* Card 4 — тёмная без текста, с UI-превью расписания */}
+            <div className="rounded-3xl overflow-hidden min-h-[220px] relative" style={{ backgroundColor: "#1E2A3F" }}>
+              <div className="absolute inset-0 p-5 flex flex-col gap-2">
+                <div className="flex items-center gap-2 mb-1">
+                  <div className="w-2 h-2 rounded-full" style={{ backgroundColor: "#8B5CF6" }} />
+                  <span className="text-xs font-semibold" style={{ color: "#A78BFA" }}>Расписание</span>
+                </div>
+                {["09:00 — Иванов И.И.", "10:30 — Петрова М.С.", "12:00 — Сидоров А.В.", "14:00 — Козлова Н.П."].map((item, i) => (
+                  <div key={i} className="flex items-center gap-2 rounded-lg px-3 py-2" style={{ backgroundColor: i === 1 ? "rgba(139,92,246,0.15)" : "rgba(255,255,255,0.04)", border: i === 1 ? "1px solid rgba(139,92,246,0.3)" : "1px solid transparent" }}>
+                    <div className="w-1.5 h-1.5 rounded-full flex-shrink-0" style={{ backgroundColor: i === 1 ? "#8B5CF6" : "#475569" }} />
+                    <span className="text-xs" style={{ color: i === 1 ? "#DDD6FE" : "#94A3B8" }}>{item}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* Card 5 — тёмная с иконкой */}
+            <div className="rounded-3xl p-8 flex flex-col justify-between min-h-[220px]" style={{ backgroundColor: "#232D45" }}>
+              <div className="w-12 h-12 rounded-2xl flex items-center justify-center mb-6" style={{ backgroundColor: "rgba(255,255,255,0.08)" }}>
+                <Icon name="RefreshCw" size={22} style={{ color: "#CBD5E1" }} />
+              </div>
+              <div>
+                <h3 className="font-bold text-xl text-white mb-2">Возврат пациентов</h3>
+                <p className="text-sm leading-relaxed" style={{ color: "#8DA3B4" }}>Автоматические воронки и напоминания через Care 360 для повторных визитов.</p>
+              </div>
+            </div>
+
+            {/* Card 6 — тёмная с иконкой */}
+            <div className="rounded-3xl p-8 flex flex-col justify-between min-h-[220px]" style={{ backgroundColor: "#232D45" }}>
+              <div className="w-12 h-12 rounded-2xl flex items-center justify-center mb-6" style={{ backgroundColor: "rgba(255,255,255,0.08)" }}>
+                <Icon name="BarChart3" size={22} style={{ color: "#CBD5E1" }} />
+              </div>
+              <div>
+                <h3 className="font-bold text-xl text-white mb-2">Аналитика и PDSA</h3>
+                <p className="text-sm leading-relaxed" style={{ color: "#8DA3B4" }}>Видно, где потери и какие действия реально приносят деньги и рост.</p>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </section>
+
       {/* ===== PORTFOLIO ===== */}
       <section id="portfolio" className="py-20 px-4 md:px-8" style={{ backgroundColor: "#161D30" }}>
         <div className="max-w-7xl mx-auto">
