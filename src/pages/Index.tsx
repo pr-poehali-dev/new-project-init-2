@@ -217,46 +217,73 @@ export default function Index() {
         </div>
       </section>
 
-      {/* ===== ABOUT ===== */}
+      {/* ===== FUNNEL (WHERE BUSINESS LOSES MONEY) ===== */}
       <section id="about" className="py-20 px-4 md:px-8" style={{ backgroundColor: "#FFFFFF" }}>
-        <div className="max-w-7xl mx-auto">
-          <div className="grid md:grid-cols-2 gap-16 items-center">
-            <div>
-              <span className="text-sm font-semibold uppercase tracking-widest mb-4 block" style={{ color: "#34B86D" }}>О компании</span>
-              <h2 className="font-display text-4xl md:text-5xl font-bold leading-tight mb-6" style={{ color: "#1B1F28" }}>
-                8 лет создаём<br />продукты,<br />
-                <span style={{ color: "#34B86D" }}>которые работают</span>
-              </h2>
-              <p className="text-lg leading-relaxed mb-8" style={{ color: "#667085" }}>
-                NOVATECH — команда из 40+ специалистов. Мы не просто делаем красивые сайты — мы строим инструменты, которые привлекают клиентов и увеличивают выручку.
-              </p>
-              <div className="flex flex-col gap-4">
-                {["Работаем по договору с гарантией результата", "Прозрачная отчётность на каждом этапе", "Поддержка 24/7 после запуска проекта"].map(item => (
-                  <div key={item} className="flex items-center gap-3">
-                    <div className="w-5 h-5 rounded-full flex items-center justify-center flex-shrink-0" style={{ backgroundColor: "#EEF8F2" }}>
-                      <Icon name="Check" size={12} style={{ color: "#34B86D" }} />
-                    </div>
-                    <span style={{ color: "#1B1F28" }}>{item}</span>
-                  </div>
-                ))}
-              </div>
-            </div>
+        <div className="max-w-5xl mx-auto">
+          {/* Header */}
+          <div className="mb-12">
+            <h2 className="font-display text-4xl md:text-5xl font-bold leading-tight mb-4" style={{ color: "#1B1F28" }}>
+              Где бизнес{" "}
+              <span style={{ color: "#34B86D" }}>теряет деньги?</span>
+            </h2>
+            <p className="text-lg" style={{ color: "#667085" }}>
+              Самые дорогие потери происходят не в рекламе, а между этапами пути клиента.
+            </p>
+          </div>
 
-            <div className="grid grid-cols-2 gap-4">
+          {/* Funnel stages */}
+          <div className="relative">
+            {/* Connector line */}
+            <div className="hidden md:block absolute top-[52px] left-[60px] right-[60px] h-px" style={{ backgroundColor: "#DDF3E5", zIndex: 0 }} />
+
+            <div className="grid grid-cols-2 md:grid-cols-6 gap-3 relative z-10">
               {[
-                { icon: "Award", title: "Лучшее агентство", sub: "по версии Ruward 2025", bg: "#EEF8F2", iconColor: "#34B86D" },
-                { icon: "Users", title: "150+ клиентов", sub: "малый и средний бизнес", bg: "#DCE6F2", iconColor: "#7C98B6" },
-                { icon: "TrendingUp", title: "+3x ROI", sub: "средний рост у клиентов", bg: "#EEF8F2", iconColor: "#34B86D" },
-                { icon: "Clock", title: "В срок всегда", sub: "97% проектов без задержек", bg: "#DCE6F2", iconColor: "#7C98B6" },
-              ].map(card => (
-                <div key={card.title} className="bg-white rounded-2xl p-6 hover:shadow-md transition-shadow duration-200" style={{ border: "1px solid #E8F0EB" }}>
-                  <div className="w-12 h-12 rounded-xl flex items-center justify-center mb-4" style={{ backgroundColor: card.bg }}>
-                    <Icon name={card.icon} size={24} style={{ color: card.iconColor }} />
+                { icon: "PhoneCall", label: "Обращение", loss: null },
+                { icon: "CalendarDays", label: "Запись", loss: "Не дозвонились" },
+                { icon: "Stethoscope", label: "Приём", loss: "Не дошёл" },
+                { icon: "ClipboardList", label: "План работ", loss: "Не понял задачу" },
+                { icon: "CreditCard", label: "Оплата", loss: "Не купил" },
+                { icon: "RotateCcw", label: "Повторный заказ", loss: "Не вернулся" },
+              ].map((stage, i) => (
+                <div key={i} className="flex flex-col items-center gap-3">
+                  {/* Stage card */}
+                  <div
+                    className="w-full flex flex-col items-center gap-3 rounded-2xl py-5 px-3 transition-all duration-200 hover:shadow-md cursor-default"
+                    style={{
+                      backgroundColor: i === 0 ? "#FFFFFF" : "#F4FBF7",
+                      border: `1px solid ${i === 0 ? "#E8F0EB" : "#DDF3E5"}`,
+                    }}
+                  >
+                    <div className="w-11 h-11 rounded-xl flex items-center justify-center" style={{ backgroundColor: "#EEF8F2" }}>
+                      <Icon name={stage.icon} size={20} style={{ color: "#34B86D" }} />
+                    </div>
+                    <span className="text-sm font-semibold text-center" style={{ color: "#1B1F28" }}>{stage.label}</span>
                   </div>
-                  <div className="font-bold text-lg" style={{ color: "#1B1F28" }}>{card.title}</div>
-                  <div className="text-sm mt-1" style={{ color: "#98A2B3" }}>{card.sub}</div>
+
+                  {/* Loss indicator */}
+                  {stage.loss ? (
+                    <div className="flex flex-col items-center gap-1.5">
+                      <div className="w-7 h-7 rounded-full flex items-center justify-center" style={{ backgroundColor: "#FFF1F3" }}>
+                        <Icon name="X" size={14} style={{ color: "#E85D75" }} />
+                      </div>
+                      <span className="text-xs text-center leading-tight" style={{ color: "#E85D75" }}>{stage.loss}</span>
+                    </div>
+                  ) : (
+                    <div className="h-[52px]" />
+                  )}
                 </div>
               ))}
+            </div>
+          </div>
+
+          {/* Bottom note */}
+          <div className="mt-10 rounded-2xl p-6 flex items-start gap-4" style={{ backgroundColor: "#F4FBF7", border: "1px solid #DDF3E5" }}>
+            <div className="w-10 h-10 rounded-xl flex items-center justify-center flex-shrink-0" style={{ backgroundColor: "#EEF8F2" }}>
+              <Icon name="Lightbulb" size={20} style={{ color: "#34B86D" }} />
+            </div>
+            <div>
+              <p className="font-semibold mb-1" style={{ color: "#1B1F28" }}>NOVATECH выявляет узкие места и помогает закрыть потери на каждом этапе</p>
+              <p className="text-sm" style={{ color: "#667085" }}>Сайт, CRM, аналитика и автоматизация работают как единая система — без дыр в воронке.</p>
             </div>
           </div>
         </div>
