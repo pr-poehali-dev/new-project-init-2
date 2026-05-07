@@ -289,32 +289,92 @@ export default function Index() {
         </div>
       </section>
 
-      {/* ===== SERVICES ===== */}
+      {/* ===== ECOSYSTEM HERO ===== */}
       <section id="services" className="py-20 px-4 md:px-8" style={{ backgroundColor: "#F7FAF8" }}>
-        <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-16">
-            <span className="text-sm font-semibold uppercase tracking-widest mb-4 block" style={{ color: "#34B86D" }}>Услуги</span>
-            <h2 className="font-display text-4xl md:text-5xl font-bold mb-4" style={{ color: "#1B1F28" }}>Что мы делаем</h2>
-            <p className="text-lg max-w-xl mx-auto" style={{ color: "#667085" }}>Полный цикл цифровой трансформации вашего бизнеса — от стратегии до поддержки.</p>
-          </div>
+        <div className="max-w-6xl mx-auto">
+          <div className="rounded-3xl overflow-hidden" style={{ backgroundColor: "#1B2235" }}>
+            <div className="grid md:grid-cols-2 gap-0 items-center">
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
-            {SERVICES.map((s, i) => (
-              <div key={i}
-                className="group bg-white rounded-2xl p-8 cursor-pointer transition-all duration-300 hover:shadow-lg"
-                style={{ border: "1px solid #E8F0EB" }}
-                onMouseEnter={e => { (e.currentTarget.style.borderColor = "#7BD9A1"); }}
-                onMouseLeave={e => { (e.currentTarget.style.borderColor = "#E8F0EB"); }}>
-                <div className="w-14 h-14 rounded-2xl flex items-center justify-center mb-6 transition-colors duration-300" style={{ backgroundColor: "#EEF8F2" }}>
-                  <Icon name={s.icon} size={26} style={{ color: "#34B86D" }} />
-                </div>
-                <h3 className="font-bold text-xl mb-3" style={{ color: "#1B1F28" }}>{s.title}</h3>
-                <p className="leading-relaxed" style={{ color: "#667085" }}>{s.desc}</p>
-                <div className="mt-6 flex items-center gap-2 font-semibold text-sm" style={{ color: "#34B86D" }}>
-                  Подробнее <Icon name="ArrowRight" size={16} />
+              {/* Left: text */}
+              <div className="p-10 md:p-14">
+                <span className="text-xs font-bold uppercase tracking-widest mb-6 block" style={{ color: "#7BD9A1" }}>
+                  #1 В СТРАНЕ СРЕДИ IT-РЕШЕНИЙ ДЛЯ БИЗНЕСА
+                </span>
+                <h2 className="font-display text-3xl md:text-4xl font-bold leading-tight mb-5 text-white">
+                  NOVATECH — платформа,<br className="hidden md:block" /> которая показывает,<br className="hidden md:block" />
+                  <span style={{ color: "#7BD9A1" }}>где бизнес теряет клиентов и деньги</span>
+                </h2>
+                <p className="text-base leading-relaxed mb-8" style={{ color: "#8DA3B4" }}>
+                  От первого обращения до оплаты и повторного заказа — CRM, аналитика, ИИ-ассистент и автоматические воронки в одной системе.
+                </p>
+
+                <div className="flex flex-wrap items-center gap-4">
+                  <a href="#contacts"
+                    className="inline-flex items-center gap-2 font-bold px-6 py-3 rounded-xl text-white transition-all duration-200"
+                    style={{ backgroundColor: "#34B86D" }}
+                    onMouseEnter={e => (e.currentTarget.style.backgroundColor = "#249454")}
+                    onMouseLeave={e => (e.currentTarget.style.backgroundColor = "#34B86D")}>
+                    Демо на 7 дней
+                    <Icon name="ArrowRight" size={18} />
+                  </a>
+                  <a href="#about"
+                    className="inline-flex items-center gap-2 font-semibold text-sm transition-colors duration-200"
+                    style={{ color: "#7BD9A1" }}
+                    onMouseEnter={e => (e.currentTarget.style.color = "#FFFFFF")}
+                    onMouseLeave={e => (e.currentTarget.style.color = "#7BD9A1")}>
+                    Где теряются деньги
+                    <Icon name="ArrowRight" size={16} />
+                  </a>
                 </div>
               </div>
-            ))}
+
+              {/* Right: ecosystem diagram */}
+              <div className="p-8 md:p-10 flex items-center justify-center">
+                <div className="w-full max-w-sm rounded-2xl p-6" style={{ backgroundColor: "#232D45", border: "1px solid rgba(123,217,161,0.15)" }}>
+                  {/* Diagram title */}
+                  <div className="text-center mb-5">
+                    <span className="text-xs font-semibold uppercase tracking-widest" style={{ color: "#7BD9A1" }}>Единая экосистема</span>
+                  </div>
+
+                  {/* 4 quadrants */}
+                  <div className="grid grid-cols-2 gap-3">
+                    {[
+                      {
+                        color: "#3B82F6", label: "Управление", items: ["Платформа", "CRM", "Аналитика"],
+                      },
+                      {
+                        color: "#34B86D", label: "Рост", items: ["Сквозная аналитика", "PDSA-цикл", "Дашборды"],
+                      },
+                      {
+                        color: "#8B5CF6", label: "Коммуникации", items: ["ИИ-ассистент", "Воронки", "Уведомления"],
+                      },
+                      {
+                        color: "#F59E0B", label: "Интеграции", items: ["API / ЭДО", "Телефония", "Онлайн-касса"],
+                      },
+                    ].map((q) => (
+                      <div key={q.label} className="rounded-xl p-4" style={{ backgroundColor: "#1B2235", border: `1px solid ${q.color}40` }}>
+                        <div className="flex items-center gap-2 mb-2">
+                          <div className="w-2 h-2 rounded-full flex-shrink-0" style={{ backgroundColor: q.color }} />
+                          <span className="text-xs font-bold text-white">{q.label}</span>
+                        </div>
+                        {q.items.map(item => (
+                          <div key={item} className="flex items-center gap-1.5 mt-1">
+                            <Icon name="Check" size={10} style={{ color: q.color }} />
+                            <span className="text-xs" style={{ color: "#8DA3B4" }}>{item}</span>
+                          </div>
+                        ))}
+                      </div>
+                    ))}
+                  </div>
+
+                  {/* Center badge */}
+                  <div className="mt-4 rounded-xl py-3 text-center" style={{ backgroundColor: "#1B2235", border: "1px solid rgba(123,217,161,0.2)" }}>
+                    <span className="text-xs font-semibold" style={{ color: "#7BD9A1" }}>Технологическая база — микросервисы</span>
+                  </div>
+                </div>
+              </div>
+
+            </div>
           </div>
         </div>
       </section>
