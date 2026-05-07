@@ -20,10 +20,10 @@ const SERVICES = [
 ];
 
 const PORTFOLIO = [
-  { tag: "E-commerce", title: "Интернет-магазин одежды", result: "+240% продаж за 6 месяцев", color: "from-blue-500 to-violet-600" },
-  { tag: "SaaS", title: "CRM для застройщиков", result: "3000+ активных пользователей", color: "from-emerald-500 to-teal-600" },
-  { tag: "Финтех", title: "Платёжная платформа", result: "Обработка 50M ₽/день", color: "from-orange-500 to-red-600" },
-  { tag: "Медицина", title: "Система записи пациентов", result: "40% сокращение времени ожидания", color: "from-pink-500 to-rose-600" },
+  { tag: "E-commerce", title: "Интернет-магазин одежды", result: "+240% продаж за 6 месяцев" },
+  { tag: "SaaS", title: "CRM для застройщиков", result: "3000+ активных пользователей" },
+  { tag: "Финтех", title: "Платёжная платформа", result: "Обработка 50M ₽/день" },
+  { tag: "Медицина", title: "Система записи пациентов", result: "40% сокращение времени ожидания" },
 ];
 
 const BLOG_POSTS = [
@@ -32,11 +32,11 @@ const BLOG_POSTS = [
   { date: "3 апр 2026", tag: "SEO", title: "SEO в 2026: что работает, а что уже нет", desc: "Актуальные стратегии продвижения с учётом последних обновлений алгоритмов поисковиков." },
 ];
 
-const STATS = [
-  { value: "150+", label: "Проектов запущено" },
-  { value: "8 лет", label: "На рынке" },
-  { value: "97%", label: "Довольных клиентов" },
-  { value: "40+", label: "Специалистов" },
+const TRUST_BADGES = [
+  { icon: "Building2", label: "150+ проектов" },
+  { icon: "Layers", label: "Единая экосистема" },
+  { icon: "CalendarCheck", label: "Демо 7 дней" },
+  { icon: "Headphones", label: "Поддержка и внедрение" },
 ];
 
 export default function Index() {
@@ -50,43 +50,50 @@ export default function Index() {
   };
 
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen" style={{ backgroundColor: "#F7FAF8", color: "#1B1F28" }}>
 
       {/* ===== NAVBAR ===== */}
-      <nav className="fixed top-0 left-0 right-0 z-50 bg-white/90 backdrop-blur-md border-b border-gray-100 shadow-sm">
+      <nav style={{ backgroundColor: "rgba(247,250,248,0.92)", borderBottom: "1px solid #E8F0EB" }} className="fixed top-0 left-0 right-0 z-50 backdrop-blur-md">
         <div className="max-w-7xl mx-auto flex items-center justify-between h-16 px-4 md:px-8">
           <a href="#home" className="flex items-center gap-2">
-            <div className="w-8 h-8 bg-blue-600 rounded-lg flex items-center justify-center">
+            <div className="w-8 h-8 rounded-lg flex items-center justify-center" style={{ backgroundColor: "#34B86D" }}>
               <Icon name="Zap" size={18} className="text-white" />
             </div>
-            <span className="font-display text-xl font-bold tracking-wide text-gray-900">NOVA<span className="text-blue-600">TECH</span></span>
+            <span className="font-display text-xl font-bold tracking-wide" style={{ color: "#1B1F28" }}>
+              NOVA<span style={{ color: "#34B86D" }}>TECH</span>
+            </span>
           </a>
 
           <div className="hidden md:flex items-center gap-8">
             {NAV_LINKS.map(l => (
-              <a key={l.href} href={l.href} className="text-gray-600 hover:text-blue-600 text-sm font-medium transition-colors duration-200">
+              <a key={l.href} href={l.href} className="text-sm font-medium transition-colors duration-200" style={{ color: "#667085" }}
+                onMouseEnter={e => (e.currentTarget.style.color = "#34B86D")}
+                onMouseLeave={e => (e.currentTarget.style.color = "#667085")}>
                 {l.label}
               </a>
             ))}
           </div>
 
-          <a href="#contacts" className="hidden md:inline-flex items-center gap-2 bg-blue-600 hover:bg-blue-700 text-white text-sm font-semibold px-5 py-2.5 rounded-lg transition-colors duration-200">
+          <a href="#contacts" className="hidden md:inline-flex items-center gap-2 text-white text-sm font-semibold px-5 py-2.5 rounded-lg transition-all duration-200"
+            style={{ backgroundColor: "#34B86D" }}
+            onMouseEnter={e => (e.currentTarget.style.backgroundColor = "#249454")}
+            onMouseLeave={e => (e.currentTarget.style.backgroundColor = "#34B86D")}>
             Оставить заявку
           </a>
 
           <button className="md:hidden p-2" onClick={() => setMenuOpen(!menuOpen)}>
-            <Icon name={menuOpen ? "X" : "Menu"} size={22} className="text-gray-700" />
+            <Icon name={menuOpen ? "X" : "Menu"} size={22} style={{ color: "#1B1F28" }} />
           </button>
         </div>
 
         {menuOpen && (
-          <div className="md:hidden bg-white border-t border-gray-100 px-4 py-4 flex flex-col gap-3">
+          <div className="md:hidden bg-white border-t px-4 py-4 flex flex-col gap-3" style={{ borderColor: "#E8F0EB" }}>
             {NAV_LINKS.map(l => (
-              <a key={l.href} href={l.href} className="text-gray-700 font-medium py-1" onClick={() => setMenuOpen(false)}>
+              <a key={l.href} href={l.href} className="font-medium py-1" style={{ color: "#1B1F28" }} onClick={() => setMenuOpen(false)}>
                 {l.label}
               </a>
             ))}
-            <a href="#contacts" className="mt-2 bg-blue-600 text-white text-center py-3 rounded-lg font-semibold" onClick={() => setMenuOpen(false)}>
+            <a href="#contacts" className="mt-2 text-white text-center py-3 rounded-lg font-semibold" style={{ backgroundColor: "#34B86D" }} onClick={() => setMenuOpen(false)}>
               Оставить заявку
             </a>
           </div>
@@ -94,80 +101,142 @@ export default function Index() {
       </nav>
 
       {/* ===== HERO ===== */}
-      <section id="home" className="relative min-h-screen flex items-center overflow-hidden" style={{ background: "linear-gradient(135deg, #0f172a 0%, #1e3a8a 50%, #0f172a 100%)" }}>
-        <div className="absolute inset-0 opacity-30" style={{ backgroundImage: "url('https://cdn.poehali.dev/projects/56e2666f-17ee-442b-bfe7-8254b5ffe939/files/44723168-9f92-42c7-ab2b-6c963225af92.jpg')", backgroundSize: "cover", backgroundPosition: "center" }} />
-        <div className="absolute inset-0" style={{ background: "radial-gradient(ellipse at 30% 50%, rgba(37,99,235,0.3) 0%, transparent 60%), radial-gradient(ellipse at 70% 20%, rgba(124,58,237,0.2) 0%, transparent 50%)" }} />
+      <section id="home" className="pt-16">
+        <div className="max-w-7xl mx-auto px-4 md:px-8 pt-12 pb-0">
 
-        <div className="absolute top-32 right-20 w-64 h-64 opacity-10 hidden lg:block">
-          <div className="grid grid-cols-8 gap-4">
-            {Array.from({ length: 64 }).map((_, i) => (
-              <div key={i} className="w-1.5 h-1.5 bg-white rounded-full" />
+          {/* Hero card — светлая большая карточка */}
+          <div className="rounded-3xl overflow-hidden relative" style={{ backgroundColor: "#FFFFFF", border: "1px solid #E8F0EB" }}>
+            <div className="grid md:grid-cols-2 gap-0 min-h-[520px]">
+
+              {/* LEFT: текст */}
+              <div className="p-10 md:p-14 flex flex-col justify-between">
+                <div>
+                  {/* Super-label */}
+                  <p className="text-xs font-semibold uppercase tracking-widest mb-6" style={{ color: "#98A2B3" }}>
+                    #1 среди digital-агентств региона
+                  </p>
+
+                  <h1 className="font-display text-4xl md:text-5xl font-bold leading-tight mb-5" style={{ color: "#1B1F28" }}>
+                    NOVATECH — агентство,<br />
+                    которое показывает,<br />
+                    <span style={{ color: "#34B86D" }}>где бизнес теряет<br />клиентов и деньги</span>
+                  </h1>
+
+                  <p className="text-base leading-relaxed mb-10" style={{ color: "#667085", maxWidth: "420px" }}>
+                    От первого обращения до повторной продажи — сайты, аналитика, автоматизация и AI-инструменты в одной экосистеме.
+                  </p>
+
+                  {/* CTA buttons */}
+                  <div className="flex flex-wrap items-center gap-4">
+                    <a href="#contacts"
+                      className="inline-flex items-center gap-2 text-white font-bold px-7 py-3.5 rounded-xl text-base transition-all duration-200"
+                      style={{ backgroundColor: "#34B86D" }}
+                      onMouseEnter={e => (e.currentTarget.style.backgroundColor = "#249454")}
+                      onMouseLeave={e => (e.currentTarget.style.backgroundColor = "#34B86D")}>
+                      Демо на 7 дней
+                      <Icon name="ArrowRight" size={18} />
+                    </a>
+                    <a href="#portfolio"
+                      className="inline-flex items-center gap-2 font-semibold text-base transition-colors duration-200"
+                      style={{ color: "#667085" }}
+                      onMouseEnter={e => (e.currentTarget.style.color = "#34B86D")}
+                      onMouseLeave={e => (e.currentTarget.style.color = "#667085")}>
+                      Где клиент теряет деньги
+                      <Icon name="ArrowRight" size={16} />
+                    </a>
+                  </div>
+                </div>
+
+                {/* Trust badges bottom */}
+                <div className="flex flex-col gap-3 mt-12">
+                  <div className="flex items-center gap-3 p-3 rounded-xl" style={{ backgroundColor: "#F7FAF8", border: "1px solid #E8F0EB" }}>
+                    <div className="w-9 h-9 rounded-lg flex items-center justify-center flex-shrink-0" style={{ backgroundColor: "#EEF8F2" }}>
+                      <Icon name="Globe" size={18} style={{ color: "#34B86D" }} />
+                    </div>
+                    <div>
+                      <div className="text-xs font-semibold" style={{ color: "#1B1F28" }}>Интеграция с ведущими платформами</div>
+                      <div className="text-xs" style={{ color: "#98A2B3" }}>Разработано в России</div>
+                    </div>
+                  </div>
+                  <div className="flex items-center gap-3 p-3 rounded-xl" style={{ backgroundColor: "#F7FAF8", border: "1px solid #E8F0EB" }}>
+                    <div className="w-9 h-9 rounded-lg flex items-center justify-center flex-shrink-0" style={{ backgroundColor: "#DCE6F2" }}>
+                      <Icon name="Award" size={18} style={{ color: "#7C98B6" }} />
+                    </div>
+                    <div>
+                      <div className="text-xs font-semibold" style={{ color: "#1B1F28" }}>Резидент Сколково</div>
+                      <div className="text-xs" style={{ color: "#98A2B3" }}>Инновационный проект 2025</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              {/* RIGHT: diagram illustration */}
+              <div className="relative flex items-center justify-center p-8 md:p-10" style={{ backgroundColor: "#F4FBF7" }}>
+                {/* Background pattern */}
+                <div className="absolute inset-0 opacity-30" style={{
+                  backgroundImage: "radial-gradient(circle at 2px 2px, #7BD9A1 1px, transparent 0)",
+                  backgroundSize: "28px 28px"
+                }} />
+
+                <div className="relative z-10 w-full">
+                  <img
+                    src="https://cdn.poehali.dev/projects/56e2666f-17ee-442b-bfe7-8254b5ffe939/files/4a7928ba-0eb5-42e5-85d5-15161b217ada.jpg"
+                    alt="Platform ecosystem"
+                    className="w-full h-auto rounded-2xl animate-float"
+                    style={{ maxHeight: "400px", objectFit: "cover" }}
+                  />
+
+                  {/* Floating stat cards */}
+                  <div className="absolute top-4 left-2 bg-white rounded-xl px-4 py-2.5 shadow-lg" style={{ border: "1px solid #E8F0EB" }}>
+                    <div className="font-display text-xl font-bold" style={{ color: "#34B86D" }}>+127%</div>
+                    <div className="text-xs" style={{ color: "#98A2B3" }}>рост конверсии</div>
+                  </div>
+
+                  <div className="absolute bottom-4 right-2 bg-white rounded-xl px-4 py-2.5 shadow-lg" style={{ border: "1px solid #E8F0EB" }}>
+                    <div className="font-display text-xl font-bold" style={{ color: "#1B1F28" }}>150+</div>
+                    <div className="text-xs" style={{ color: "#98A2B3" }}>клиентов</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* Trust bar — 4 карточки */}
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-3 mt-3 mb-12">
+            {TRUST_BADGES.map((b) => (
+              <div key={b.label}
+                className="flex items-center gap-3 bg-white rounded-2xl px-5 py-4 transition-shadow duration-200 hover:shadow-md"
+                style={{ border: "1px solid #E8F0EB" }}>
+                <div className="w-9 h-9 rounded-lg flex items-center justify-center flex-shrink-0" style={{ backgroundColor: "#EEF8F2" }}>
+                  <Icon name={b.icon} size={18} style={{ color: "#34B86D" }} />
+                </div>
+                <span className="font-semibold text-sm" style={{ color: "#1B1F28" }}>{b.label}</span>
+              </div>
             ))}
           </div>
-        </div>
-
-        <div className="max-w-7xl mx-auto relative z-10 pt-20 pb-16 px-4 md:px-8">
-          <div className="max-w-3xl">
-            <div className="inline-flex items-center gap-2 bg-blue-600/20 border border-blue-500/30 text-blue-300 text-sm font-medium px-4 py-2 rounded-full mb-8">
-              <Icon name="Sparkles" size={14} />
-              Топ-1 digital-агентство в регионе
-            </div>
-
-            <h1 className="font-display text-5xl md:text-7xl font-bold text-white leading-tight mb-6">
-              Берём цифровой<br />
-              <span className="gradient-text">бизнес</span> под<br />
-              полный контроль
-            </h1>
-
-            <p className="text-lg md:text-xl text-blue-100/80 mb-10 max-w-xl leading-relaxed">
-              От идеи до запуска — разрабатываем сайты, приложения и цифровые продукты, которые приносят реальные деньги.
-            </p>
-
-            <div className="flex flex-wrap gap-4">
-              <a href="#contacts" className="inline-flex items-center gap-2 bg-blue-600 hover:bg-blue-500 text-white font-bold px-8 py-4 rounded-xl text-lg transition-all duration-200 hover:shadow-lg hover:shadow-blue-500/30">
-                Обсудить проект
-                <Icon name="ArrowRight" size={20} />
-              </a>
-              <a href="#portfolio" className="inline-flex items-center gap-2 bg-white/10 hover:bg-white/20 text-white font-semibold px-8 py-4 rounded-xl text-lg border border-white/20 transition-all duration-200">
-                Смотреть работы
-              </a>
-            </div>
-
-            <div className="flex flex-wrap gap-8 mt-16 pt-8 border-t border-white/10">
-              {STATS.map(s => (
-                <div key={s.value}>
-                  <div className="font-display text-3xl font-bold text-white">{s.value}</div>
-                  <div className="text-blue-200/70 text-sm mt-1">{s.label}</div>
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
-
-        <div className="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce">
-          <Icon name="ChevronDown" size={28} className="text-white/40" />
         </div>
       </section>
 
       {/* ===== ABOUT ===== */}
-      <section id="about" className="py-20 px-4 md:px-8 bg-gray-50">
+      <section id="about" className="py-20 px-4 md:px-8" style={{ backgroundColor: "#FFFFFF" }}>
         <div className="max-w-7xl mx-auto">
           <div className="grid md:grid-cols-2 gap-16 items-center">
             <div>
-              <span className="text-blue-600 font-semibold text-sm uppercase tracking-widest mb-4 block">О компании</span>
-              <h2 className="font-display text-4xl md:text-5xl font-bold text-gray-900 leading-tight mb-6">
-                8 лет создаём<br />цифровые продукты,<br /><span className="gradient-text">которые работают</span>
+              <span className="text-sm font-semibold uppercase tracking-widest mb-4 block" style={{ color: "#34B86D" }}>О компании</span>
+              <h2 className="font-display text-4xl md:text-5xl font-bold leading-tight mb-6" style={{ color: "#1B1F28" }}>
+                8 лет создаём<br />продукты,<br />
+                <span style={{ color: "#34B86D" }}>которые работают</span>
               </h2>
-              <p className="text-gray-600 text-lg leading-relaxed mb-8">
-                NOVATECH — команда из 40+ специалистов: разработчиков, дизайнеров и маркетологов. Мы не просто делаем красивые сайты — мы строим инструменты, которые привлекают клиентов и увеличивают выручку бизнеса.
+              <p className="text-lg leading-relaxed mb-8" style={{ color: "#667085" }}>
+                NOVATECH — команда из 40+ специалистов. Мы не просто делаем красивые сайты — мы строим инструменты, которые привлекают клиентов и увеличивают выручку.
               </p>
               <div className="flex flex-col gap-4">
                 {["Работаем по договору с гарантией результата", "Прозрачная отчётность на каждом этапе", "Поддержка 24/7 после запуска проекта"].map(item => (
                   <div key={item} className="flex items-center gap-3">
-                    <div className="w-6 h-6 bg-blue-100 rounded-full flex items-center justify-center flex-shrink-0">
-                      <Icon name="Check" size={14} className="text-blue-600" />
+                    <div className="w-5 h-5 rounded-full flex items-center justify-center flex-shrink-0" style={{ backgroundColor: "#EEF8F2" }}>
+                      <Icon name="Check" size={12} style={{ color: "#34B86D" }} />
                     </div>
-                    <span className="text-gray-700">{item}</span>
+                    <span style={{ color: "#1B1F28" }}>{item}</span>
                   </div>
                 ))}
               </div>
@@ -175,17 +244,17 @@ export default function Index() {
 
             <div className="grid grid-cols-2 gap-4">
               {[
-                { icon: "Award", title: "Лучшее агентство", sub: "по версии Ruward 2025" },
-                { icon: "Users", title: "150+ клиентов", sub: "малый и средний бизнес" },
-                { icon: "TrendingUp", title: "+3x ROI", sub: "средний рост у клиентов" },
-                { icon: "Clock", title: "В срок всегда", sub: "97% проектов без задержек" },
+                { icon: "Award", title: "Лучшее агентство", sub: "по версии Ruward 2025", bg: "#EEF8F2", iconColor: "#34B86D" },
+                { icon: "Users", title: "150+ клиентов", sub: "малый и средний бизнес", bg: "#DCE6F2", iconColor: "#7C98B6" },
+                { icon: "TrendingUp", title: "+3x ROI", sub: "средний рост у клиентов", bg: "#EEF8F2", iconColor: "#34B86D" },
+                { icon: "Clock", title: "В срок всегда", sub: "97% проектов без задержек", bg: "#DCE6F2", iconColor: "#7C98B6" },
               ].map(card => (
-                <div key={card.title} className="bg-white rounded-2xl p-6 shadow-sm border border-gray-100 hover:shadow-md transition-shadow duration-200">
-                  <div className="w-12 h-12 bg-blue-50 rounded-xl flex items-center justify-center mb-4">
-                    <Icon name={card.icon} size={24} className="text-blue-600" />
+                <div key={card.title} className="bg-white rounded-2xl p-6 hover:shadow-md transition-shadow duration-200" style={{ border: "1px solid #E8F0EB" }}>
+                  <div className="w-12 h-12 rounded-xl flex items-center justify-center mb-4" style={{ backgroundColor: card.bg }}>
+                    <Icon name={card.icon} size={24} style={{ color: card.iconColor }} />
                   </div>
-                  <div className="font-bold text-gray-900 text-lg">{card.title}</div>
-                  <div className="text-gray-500 text-sm mt-1">{card.sub}</div>
+                  <div className="font-bold text-lg" style={{ color: "#1B1F28" }}>{card.title}</div>
+                  <div className="text-sm mt-1" style={{ color: "#98A2B3" }}>{card.sub}</div>
                 </div>
               ))}
             </div>
@@ -194,23 +263,27 @@ export default function Index() {
       </section>
 
       {/* ===== SERVICES ===== */}
-      <section id="services" className="py-20 px-4 md:px-8 bg-white">
+      <section id="services" className="py-20 px-4 md:px-8" style={{ backgroundColor: "#F7FAF8" }}>
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
-            <span className="text-blue-600 font-semibold text-sm uppercase tracking-widest mb-4 block">Услуги</span>
-            <h2 className="font-display text-4xl md:text-5xl font-bold text-gray-900 mb-4">Что мы делаем</h2>
-            <p className="text-gray-500 text-lg max-w-xl mx-auto">Полный цикл цифровой трансформации вашего бизнеса — от стратегии до поддержки.</p>
+            <span className="text-sm font-semibold uppercase tracking-widest mb-4 block" style={{ color: "#34B86D" }}>Услуги</span>
+            <h2 className="font-display text-4xl md:text-5xl font-bold mb-4" style={{ color: "#1B1F28" }}>Что мы делаем</h2>
+            <p className="text-lg max-w-xl mx-auto" style={{ color: "#667085" }}>Полный цикл цифровой трансформации вашего бизнеса — от стратегии до поддержки.</p>
           </div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
             {SERVICES.map((s, i) => (
-              <div key={i} className="group bg-gray-50 hover:bg-blue-600 rounded-2xl p-8 transition-all duration-300 cursor-pointer border border-gray-100 hover:border-blue-600 hover:shadow-xl hover:shadow-blue-500/20">
-                <div className="w-14 h-14 bg-blue-100 group-hover:bg-blue-500 rounded-2xl flex items-center justify-center mb-6 transition-colors duration-300">
-                  <Icon name={s.icon} size={26} className="text-blue-600 group-hover:text-white transition-colors duration-300" />
+              <div key={i}
+                className="group bg-white rounded-2xl p-8 cursor-pointer transition-all duration-300 hover:shadow-lg"
+                style={{ border: "1px solid #E8F0EB" }}
+                onMouseEnter={e => { (e.currentTarget.style.borderColor = "#7BD9A1"); }}
+                onMouseLeave={e => { (e.currentTarget.style.borderColor = "#E8F0EB"); }}>
+                <div className="w-14 h-14 rounded-2xl flex items-center justify-center mb-6 transition-colors duration-300" style={{ backgroundColor: "#EEF8F2" }}>
+                  <Icon name={s.icon} size={26} style={{ color: "#34B86D" }} />
                 </div>
-                <h3 className="font-bold text-xl text-gray-900 group-hover:text-white mb-3 transition-colors duration-300">{s.title}</h3>
-                <p className="text-gray-500 group-hover:text-blue-100 leading-relaxed transition-colors duration-300">{s.desc}</p>
-                <div className="mt-6 flex items-center gap-2 text-blue-600 group-hover:text-white font-semibold text-sm transition-colors duration-300">
+                <h3 className="font-bold text-xl mb-3" style={{ color: "#1B1F28" }}>{s.title}</h3>
+                <p className="leading-relaxed" style={{ color: "#667085" }}>{s.desc}</p>
+                <div className="mt-6 flex items-center gap-2 font-semibold text-sm" style={{ color: "#34B86D" }}>
                   Подробнее <Icon name="ArrowRight" size={16} />
                 </div>
               </div>
@@ -220,68 +293,76 @@ export default function Index() {
       </section>
 
       {/* ===== PORTFOLIO ===== */}
-      <section id="portfolio" className="py-20 px-4 md:px-8" style={{ background: "linear-gradient(180deg, #0f172a 0%, #1e293b 100%)" }}>
+      <section id="portfolio" className="py-20 px-4 md:px-8" style={{ backgroundColor: "#161D30" }}>
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
-            <span className="text-blue-400 font-semibold text-sm uppercase tracking-widest mb-4 block">Портфолио</span>
+            <span className="text-sm font-semibold uppercase tracking-widest mb-4 block" style={{ color: "#7BD9A1" }}>Портфолио</span>
             <h2 className="font-display text-4xl md:text-5xl font-bold text-white mb-4">Наши проекты</h2>
-            <p className="text-slate-400 text-lg max-w-xl mx-auto">Реальные результаты для реального бизнеса.</p>
+            <p className="text-lg max-w-xl mx-auto" style={{ color: "#667085" }}>Реальные результаты для реального бизнеса.</p>
           </div>
 
-          <div className="grid md:grid-cols-2 gap-6">
+          <div className="grid md:grid-cols-2 gap-5">
             {PORTFOLIO.map((p, i) => (
-              <div key={i} className="relative rounded-2xl overflow-hidden group cursor-pointer">
-                <div className={`h-56 bg-gradient-to-br ${p.color} relative flex items-end p-8 transition-transform duration-300 group-hover:scale-105`}>
-                  <div className="absolute inset-0 opacity-20" style={{ backgroundImage: "repeating-linear-gradient(45deg, rgba(255,255,255,0.1) 0px, rgba(255,255,255,0.1) 1px, transparent 1px, transparent 10px)" }} />
-                  <div className="relative z-10">
-                    <span className="bg-white/20 text-white text-xs font-semibold px-3 py-1 rounded-full mb-3 inline-block backdrop-blur-sm">{p.tag}</span>
-                    <h3 className="text-white font-bold text-2xl mb-2">{p.title}</h3>
-                    <div className="flex items-center gap-2 text-white/80 text-sm">
-                      <Icon name="TrendingUp" size={14} />
-                      {p.result}
-                    </div>
-                  </div>
+              <div key={i}
+                className="rounded-2xl p-8 cursor-pointer group transition-all duration-300 hover:scale-[1.02]"
+                style={{ backgroundColor: "#202B45", border: "1px solid rgba(123,217,161,0.15)" }}
+                onMouseEnter={e => (e.currentTarget.style.borderColor = "rgba(123,217,161,0.4)")}
+                onMouseLeave={e => (e.currentTarget.style.borderColor = "rgba(123,217,161,0.15)")}>
+                <span className="text-xs font-semibold px-3 py-1 rounded-full inline-block mb-5" style={{ backgroundColor: "rgba(52,184,109,0.15)", color: "#7BD9A1" }}>{p.tag}</span>
+                <h3 className="font-bold text-xl text-white mb-3">{p.title}</h3>
+                <div className="flex items-center gap-2 text-sm" style={{ color: "#7BD9A1" }}>
+                  <Icon name="TrendingUp" size={14} />
+                  {p.result}
                 </div>
               </div>
             ))}
           </div>
 
           <div className="text-center mt-10">
-            <a href="#contacts" className="inline-flex items-center gap-2 bg-white/10 hover:bg-white/20 text-white border border-white/20 font-semibold px-8 py-4 rounded-xl transition-all duration-200">
-              Обсудить ваш проект
-              <Icon name="ArrowRight" size={18} />
+            <a href="#contacts"
+              className="inline-flex items-center gap-2 text-white font-semibold px-8 py-4 rounded-xl transition-all duration-200"
+              style={{ backgroundColor: "rgba(52,184,109,0.15)", border: "1px solid rgba(52,184,109,0.3)" }}
+              onMouseEnter={e => (e.currentTarget.style.backgroundColor = "#34B86D")}
+              onMouseLeave={e => (e.currentTarget.style.backgroundColor = "rgba(52,184,109,0.15)")}>
+              Обсудить ваш проект <Icon name="ArrowRight" size={18} />
             </a>
           </div>
         </div>
       </section>
 
       {/* ===== BLOG ===== */}
-      <section id="blog" className="py-20 px-4 md:px-8 bg-gray-50">
+      <section id="blog" className="py-20 px-4 md:px-8" style={{ backgroundColor: "#FFFFFF" }}>
         <div className="max-w-7xl mx-auto">
           <div className="flex items-end justify-between mb-16">
             <div>
-              <span className="text-blue-600 font-semibold text-sm uppercase tracking-widest mb-4 block">Блог</span>
-              <h2 className="font-display text-4xl md:text-5xl font-bold text-gray-900">Полезное о digital</h2>
+              <span className="text-sm font-semibold uppercase tracking-widest mb-4 block" style={{ color: "#34B86D" }}>Блог</span>
+              <h2 className="font-display text-4xl md:text-5xl font-bold" style={{ color: "#1B1F28" }}>Полезное о digital</h2>
             </div>
-            <a href="#blog" className="hidden md:flex items-center gap-2 text-blue-600 font-semibold hover:gap-3 transition-all duration-200">
+            <a href="#blog" className="hidden md:flex items-center gap-2 font-semibold transition-all duration-200" style={{ color: "#34B86D" }}>
               Все статьи <Icon name="ArrowRight" size={18} />
             </a>
           </div>
 
-          <div className="grid md:grid-cols-3 gap-6">
+          <div className="grid md:grid-cols-3 gap-5">
             {BLOG_POSTS.map((post, i) => (
-              <article key={i} className="bg-white rounded-2xl overflow-hidden border border-gray-100 hover:shadow-lg transition-shadow duration-300 group cursor-pointer">
-                <div className="h-48 bg-gradient-to-br from-blue-50 to-violet-50 flex items-center justify-center">
-                  <Icon name="FileText" size={48} className="text-blue-200" />
+              <article key={i}
+                className="bg-white rounded-2xl overflow-hidden group cursor-pointer hover:shadow-lg transition-shadow duration-300"
+                style={{ border: "1px solid #E8F0EB" }}>
+                <div className="h-44 flex items-center justify-center" style={{ backgroundColor: "#F4FBF7" }}>
+                  <Icon name="FileText" size={44} style={{ color: "#DDF3E5" }} />
                 </div>
                 <div className="p-6">
                   <div className="flex items-center gap-3 mb-4">
-                    <span className="bg-blue-50 text-blue-600 text-xs font-semibold px-3 py-1 rounded-full">{post.tag}</span>
-                    <span className="text-gray-400 text-sm">{post.date}</span>
+                    <span className="text-xs font-semibold px-3 py-1 rounded-full" style={{ backgroundColor: "#EEF8F2", color: "#34B86D" }}>{post.tag}</span>
+                    <span className="text-sm" style={{ color: "#98A2B3" }}>{post.date}</span>
                   </div>
-                  <h3 className="font-bold text-gray-900 text-lg leading-snug mb-3 group-hover:text-blue-600 transition-colors duration-200">{post.title}</h3>
-                  <p className="text-gray-500 text-sm leading-relaxed">{post.desc}</p>
-                  <div className="mt-5 flex items-center gap-2 text-blue-600 font-semibold text-sm">
+                  <h3 className="font-bold text-lg leading-snug mb-3 transition-colors duration-200" style={{ color: "#1B1F28" }}
+                    onMouseEnter={e => (e.currentTarget.style.color = "#34B86D")}
+                    onMouseLeave={e => (e.currentTarget.style.color = "#1B1F28")}>
+                    {post.title}
+                  </h3>
+                  <p className="text-sm leading-relaxed" style={{ color: "#667085" }}>{post.desc}</p>
+                  <div className="mt-5 flex items-center gap-2 font-semibold text-sm" style={{ color: "#34B86D" }}>
                     Читать <Icon name="ArrowRight" size={14} />
                   </div>
                 </div>
@@ -292,114 +373,128 @@ export default function Index() {
       </section>
 
       {/* ===== CTA BANNER ===== */}
-      <section className="py-20 px-4" style={{ background: "linear-gradient(135deg, #1d4ed8 0%, #7c3aed 100%)" }}>
-        <div className="max-w-7xl mx-auto text-center">
-          <h2 className="font-display text-4xl md:text-5xl font-bold text-white mb-6">
-            Готовы запустить проект?
-          </h2>
-          <p className="text-blue-100 text-lg mb-10 max-w-xl mx-auto">
-            Получите бесплатную консультацию и расчёт стоимости за 24 часа.
-          </p>
-          <a href="#contacts" className="inline-flex items-center gap-2 bg-white text-blue-700 hover:bg-blue-50 font-bold px-10 py-5 rounded-xl text-lg transition-colors duration-200 shadow-xl">
-            Получить консультацию
-            <Icon name="ArrowRight" size={20} />
-          </a>
+      <section className="py-20 px-4" style={{ backgroundColor: "#F7FAF8" }}>
+        <div className="max-w-7xl mx-auto">
+          <div className="rounded-3xl px-10 py-16 text-center" style={{ background: "linear-gradient(135deg, #161D30 0%, #202B45 100%)" }}>
+            <span className="text-sm font-semibold uppercase tracking-widest mb-4 block" style={{ color: "#7BD9A1" }}>Начать сейчас</span>
+            <h2 className="font-display text-4xl md:text-5xl font-bold text-white mb-5">
+              Готовы запустить проект?
+            </h2>
+            <p className="text-lg mb-10 max-w-xl mx-auto" style={{ color: "#667085" }}>
+              Получите бесплатную консультацию и расчёт стоимости за 24 часа.
+            </p>
+            <a href="#contacts"
+              className="inline-flex items-center gap-2 font-bold px-10 py-5 rounded-xl text-lg transition-all duration-200"
+              style={{ backgroundColor: "#34B86D", color: "#FFFFFF" }}
+              onMouseEnter={e => (e.currentTarget.style.backgroundColor = "#249454")}
+              onMouseLeave={e => (e.currentTarget.style.backgroundColor = "#34B86D")}>
+              Получить консультацию <Icon name="ArrowRight" size={20} />
+            </a>
+          </div>
         </div>
       </section>
 
       {/* ===== CONTACTS ===== */}
-      <section id="contacts" className="py-20 px-4 md:px-8 bg-white">
+      <section id="contacts" className="py-20 px-4 md:px-8" style={{ backgroundColor: "#FFFFFF" }}>
         <div className="max-w-7xl mx-auto">
           <div className="grid md:grid-cols-2 gap-16">
             <div>
-              <span className="text-blue-600 font-semibold text-sm uppercase tracking-widest mb-4 block">Контакты</span>
-              <h2 className="font-display text-4xl md:text-5xl font-bold text-gray-900 leading-tight mb-6">
-                Давайте<br />поговорим о<br /><span className="gradient-text">вашем проекте</span>
+              <span className="text-sm font-semibold uppercase tracking-widest mb-4 block" style={{ color: "#34B86D" }}>Контакты</span>
+              <h2 className="font-display text-4xl md:text-5xl font-bold leading-tight mb-6" style={{ color: "#1B1F28" }}>
+                Давайте<br />поговорим о<br />
+                <span style={{ color: "#34B86D" }}>вашем проекте</span>
               </h2>
-              <p className="text-gray-500 text-lg leading-relaxed mb-10">
+              <p className="text-lg leading-relaxed mb-10" style={{ color: "#667085" }}>
                 Расскажите о задаче — мы свяжемся в течение 2 часов и предложим лучшее решение.
               </p>
 
               <div className="flex flex-col gap-5">
                 {[
-                  { icon: "Phone", label: "Телефон", value: "+7 (800) 555-35-35" },
-                  { icon: "Mail", label: "Email", value: "info@novatech.ru" },
-                  { icon: "MapPin", label: "Офис", value: "Москва, ул. Большая Садовая, 5" },
-                  { icon: "Clock", label: "Режим работы", value: "Пн–Пт: 9:00 – 19:00" },
+                  { icon: "Phone", label: "Телефон", value: "+7 (800) 555-35-35", bg: "#EEF8F2", color: "#34B86D" },
+                  { icon: "Mail", label: "Email", value: "info@novatech.ru", bg: "#EEF8F2", color: "#34B86D" },
+                  { icon: "MapPin", label: "Офис", value: "Москва, ул. Большая Садовая, 5", bg: "#DCE6F2", color: "#7C98B6" },
+                  { icon: "Clock", label: "Режим работы", value: "Пн–Пт: 9:00 – 19:00", bg: "#DCE6F2", color: "#7C98B6" },
                 ].map(c => (
                   <div key={c.label} className="flex items-center gap-4">
-                    <div className="w-12 h-12 bg-blue-50 rounded-xl flex items-center justify-center flex-shrink-0">
-                      <Icon name={c.icon} size={22} className="text-blue-600" />
+                    <div className="w-12 h-12 rounded-xl flex items-center justify-center flex-shrink-0" style={{ backgroundColor: c.bg }}>
+                      <Icon name={c.icon} size={22} style={{ color: c.color }} />
                     </div>
                     <div>
-                      <div className="text-gray-400 text-sm">{c.label}</div>
-                      <div className="text-gray-900 font-semibold">{c.value}</div>
+                      <div className="text-sm" style={{ color: "#98A2B3" }}>{c.label}</div>
+                      <div className="font-semibold" style={{ color: "#1B1F28" }}>{c.value}</div>
                     </div>
                   </div>
                 ))}
               </div>
             </div>
 
-            <div className="bg-gray-50 rounded-3xl p-8 border border-gray-100">
+            <div className="rounded-3xl p-8" style={{ backgroundColor: "#F7FAF8", border: "1px solid #E8F0EB" }}>
               {sent ? (
                 <div className="h-full flex flex-col items-center justify-center text-center py-12">
-                  <div className="w-20 h-20 bg-green-100 rounded-full flex items-center justify-center mb-6">
-                    <Icon name="CheckCircle" size={40} className="text-green-600" />
+                  <div className="w-20 h-20 rounded-full flex items-center justify-center mb-6" style={{ backgroundColor: "#EEF8F2" }}>
+                    <Icon name="CheckCircle" size={40} style={{ color: "#34B86D" }} />
                   </div>
-                  <h3 className="font-display text-2xl font-bold text-gray-900 mb-3">Заявка отправлена!</h3>
-                  <p className="text-gray-500">Мы свяжемся с вами в течение 2 часов в рабочее время.</p>
-                  <button onClick={() => setSent(false)} className="mt-8 text-blue-600 font-semibold hover:underline">Отправить ещё одну</button>
+                  <h3 className="font-display text-2xl font-bold mb-3" style={{ color: "#1B1F28" }}>Заявка отправлена!</h3>
+                  <p style={{ color: "#667085" }}>Мы свяжемся с вами в течение 2 часов в рабочее время.</p>
+                  <button onClick={() => setSent(false)} className="mt-8 font-semibold hover:underline" style={{ color: "#34B86D" }}>
+                    Отправить ещё одну
+                  </button>
                 </div>
               ) : (
                 <>
-                  <h3 className="font-bold text-2xl text-gray-900 mb-2">Оставить заявку</h3>
-                  <p className="text-gray-500 mb-8">Заполните форму — мы перезвоним бесплатно</p>
+                  <h3 className="font-bold text-2xl mb-2" style={{ color: "#1B1F28" }}>Оставить заявку</h3>
+                  <p className="mb-8" style={{ color: "#667085" }}>Заполните форму — мы перезвоним бесплатно</p>
 
                   <form onSubmit={handleSubmit} className="flex flex-col gap-4">
                     <div>
-                      <label className="text-gray-700 text-sm font-medium mb-2 block">Ваше имя *</label>
+                      <label className="text-sm font-medium mb-2 block" style={{ color: "#1B1F28" }}>Ваше имя *</label>
                       <input
-                        required
-                        type="text"
-                        placeholder="Иван Петров"
+                        required type="text" placeholder="Иван Петров"
                         value={form.name}
                         onChange={e => setForm({ ...form, name: e.target.value })}
-                        className="w-full border border-gray-200 bg-white rounded-xl px-4 py-3.5 text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200"
+                        className="w-full bg-white rounded-xl px-4 py-3.5 placeholder-gray-400 focus:outline-none transition-all duration-200"
+                        style={{ border: "1.5px solid #E8F0EB", color: "#1B1F28" }}
+                        onFocus={e => (e.currentTarget.style.borderColor = "#34B86D")}
+                        onBlur={e => (e.currentTarget.style.borderColor = "#E8F0EB")}
                       />
                     </div>
 
                     <div>
-                      <label className="text-gray-700 text-sm font-medium mb-2 block">Телефон *</label>
+                      <label className="text-sm font-medium mb-2 block" style={{ color: "#1B1F28" }}>Телефон *</label>
                       <input
-                        required
-                        type="tel"
-                        placeholder="+7 (999) 000-00-00"
+                        required type="tel" placeholder="+7 (999) 000-00-00"
                         value={form.phone}
                         onChange={e => setForm({ ...form, phone: e.target.value })}
-                        className="w-full border border-gray-200 bg-white rounded-xl px-4 py-3.5 text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200"
+                        className="w-full bg-white rounded-xl px-4 py-3.5 placeholder-gray-400 focus:outline-none transition-all duration-200"
+                        style={{ border: "1.5px solid #E8F0EB", color: "#1B1F28" }}
+                        onFocus={e => (e.currentTarget.style.borderColor = "#34B86D")}
+                        onBlur={e => (e.currentTarget.style.borderColor = "#E8F0EB")}
                       />
                     </div>
 
                     <div>
-                      <label className="text-gray-700 text-sm font-medium mb-2 block">Расскажите о проекте</label>
+                      <label className="text-sm font-medium mb-2 block" style={{ color: "#1B1F28" }}>Расскажите о проекте</label>
                       <textarea
-                        rows={4}
-                        placeholder="Кратко опишите задачу — что нужно сделать, сроки, бюджет..."
+                        rows={4} placeholder="Кратко опишите задачу..."
                         value={form.message}
                         onChange={e => setForm({ ...form, message: e.target.value })}
-                        className="w-full border border-gray-200 bg-white rounded-xl px-4 py-3.5 text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200 resize-none"
+                        className="w-full bg-white rounded-xl px-4 py-3.5 placeholder-gray-400 focus:outline-none transition-all duration-200 resize-none"
+                        style={{ border: "1.5px solid #E8F0EB", color: "#1B1F28" }}
+                        onFocus={e => (e.currentTarget.style.borderColor = "#34B86D")}
+                        onBlur={e => (e.currentTarget.style.borderColor = "#E8F0EB")}
                       />
                     </div>
 
                     <button
                       type="submit"
-                      className="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-4 rounded-xl text-lg transition-colors duration-200 mt-2 flex items-center justify-center gap-2"
-                    >
-                      Отправить заявку
-                      <Icon name="Send" size={18} />
+                      className="w-full text-white font-bold py-4 rounded-xl text-lg transition-colors duration-200 mt-2 flex items-center justify-center gap-2"
+                      style={{ backgroundColor: "#34B86D" }}
+                      onMouseEnter={e => (e.currentTarget.style.backgroundColor = "#249454")}
+                      onMouseLeave={e => (e.currentTarget.style.backgroundColor = "#34B86D")}>
+                      Отправить заявку <Icon name="Send" size={18} />
                     </button>
 
-                    <p className="text-gray-400 text-xs text-center">
+                    <p className="text-xs text-center" style={{ color: "#98A2B3" }}>
                       Нажимая кнопку, вы соглашаетесь с политикой конфиденциальности
                     </p>
                   </form>
@@ -411,23 +506,27 @@ export default function Index() {
       </section>
 
       {/* ===== FOOTER ===== */}
-      <footer style={{ background: "#0f172a" }} className="py-12 px-4 md:px-8">
+      <footer className="py-12 px-4 md:px-8" style={{ backgroundColor: "#161D30" }}>
         <div className="max-w-7xl mx-auto">
           <div className="grid md:grid-cols-4 gap-10 mb-10">
             <div className="md:col-span-1">
               <div className="flex items-center gap-2 mb-4">
-                <div className="w-8 h-8 bg-blue-600 rounded-lg flex items-center justify-center">
+                <div className="w-8 h-8 rounded-lg flex items-center justify-center" style={{ backgroundColor: "#34B86D" }}>
                   <Icon name="Zap" size={18} className="text-white" />
                 </div>
-                <span className="font-display text-xl font-bold text-white">NOVA<span className="text-blue-400">TECH</span></span>
+                <span className="font-display text-xl font-bold text-white">NOVA<span style={{ color: "#34B86D" }}>TECH</span></span>
               </div>
-              <p className="text-slate-400 text-sm leading-relaxed">
+              <p className="text-sm leading-relaxed" style={{ color: "#667085" }}>
                 Цифровое агентство полного цикла. Создаём продукты, которые приносят результат.
               </p>
               <div className="flex gap-3 mt-5">
                 {["MessageCircle", "Send", "Instagram", "Linkedin"].map(icon => (
-                  <button key={icon} className="w-9 h-9 bg-slate-800 hover:bg-blue-600 rounded-lg flex items-center justify-center transition-colors duration-200">
-                    <Icon name={icon} size={16} className="text-slate-400" />
+                  <button key={icon}
+                    className="w-9 h-9 rounded-lg flex items-center justify-center transition-colors duration-200"
+                    style={{ backgroundColor: "#202B45" }}
+                    onMouseEnter={e => (e.currentTarget.style.backgroundColor = "#34B86D")}
+                    onMouseLeave={e => (e.currentTarget.style.backgroundColor = "#202B45")}>
+                    <Icon name={icon} size={16} style={{ color: "#667085" }} />
                   </button>
                 ))}
               </div>
@@ -439,11 +538,15 @@ export default function Index() {
               { title: "Контакты", links: ["+7 (800) 555-35-35", "info@novatech.ru", "Москва, Садовая 5", "Пн–Пт 9:00–19:00"] },
             ].map(col => (
               <div key={col.title}>
-                <div className="text-white font-semibold mb-4">{col.title}</div>
+                <div className="font-semibold mb-4 text-white">{col.title}</div>
                 <ul className="flex flex-col gap-2">
                   {col.links.map(link => (
                     <li key={link}>
-                      <a href="#" className="text-slate-400 hover:text-blue-400 text-sm transition-colors duration-200">{link}</a>
+                      <a href="#" className="text-sm transition-colors duration-200" style={{ color: "#667085" }}
+                        onMouseEnter={e => (e.currentTarget.style.color = "#34B86D")}
+                        onMouseLeave={e => (e.currentTarget.style.color = "#667085")}>
+                        {link}
+                      </a>
                     </li>
                   ))}
                 </ul>
@@ -451,11 +554,19 @@ export default function Index() {
             ))}
           </div>
 
-          <div className="border-t border-slate-800 pt-8 flex flex-col md:flex-row items-center justify-between gap-4">
-            <p className="text-slate-500 text-sm">© 2026 NOVATECH. Все права защищены.</p>
+          <div className="pt-8 flex flex-col md:flex-row items-center justify-between gap-4" style={{ borderTop: "1px solid #202B45" }}>
+            <p className="text-sm" style={{ color: "#667085" }}>© 2026 NOVATECH. Все права защищены.</p>
             <div className="flex gap-6">
-              <a href="#" className="text-slate-500 hover:text-slate-300 text-sm transition-colors">Политика конфиденциальности</a>
-              <a href="#" className="text-slate-500 hover:text-slate-300 text-sm transition-colors">Договор оферты</a>
+              <a href="#" className="text-sm transition-colors" style={{ color: "#667085" }}
+                onMouseEnter={e => (e.currentTarget.style.color = "#98A2B3")}
+                onMouseLeave={e => (e.currentTarget.style.color = "#667085")}>
+                Политика конфиденциальности
+              </a>
+              <a href="#" className="text-sm transition-colors" style={{ color: "#667085" }}
+                onMouseEnter={e => (e.currentTarget.style.color = "#98A2B3")}
+                onMouseLeave={e => (e.currentTarget.style.color = "#667085")}>
+                Договор оферты
+              </a>
             </div>
           </div>
         </div>
