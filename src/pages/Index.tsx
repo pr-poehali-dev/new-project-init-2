@@ -53,22 +53,22 @@ export default function Index() {
     <div className="min-h-screen" style={{ backgroundColor: "#F7FAF8", color: "#1B1F28" }}>
 
       {/* ===== NAVBAR ===== */}
-      <nav style={{ backgroundColor: "rgba(247,250,248,0.92)", borderBottom: "1px solid #E8F0EB" }} className="fixed top-0 left-0 right-0 z-50 backdrop-blur-md">
+      <nav style={{ backgroundColor: "rgba(27,34,53,0.95)", borderBottom: "1px solid rgba(123,217,161,0.12)" }} className="fixed top-0 left-0 right-0 z-50 backdrop-blur-md">
         <div className="max-w-7xl mx-auto flex items-center justify-between h-16 px-4 md:px-8">
           <a href="#home" className="flex items-center gap-2">
             <div className="w-8 h-8 rounded-lg flex items-center justify-center" style={{ backgroundColor: "#34B86D" }}>
               <Icon name="Zap" size={18} className="text-white" />
             </div>
-            <span className="font-display text-xl font-bold tracking-wide" style={{ color: "#1B1F28" }}>
+            <span className="font-display text-xl font-bold tracking-wide text-white">
               NOVA<span style={{ color: "#34B86D" }}>TECH</span>
             </span>
           </a>
 
           <div className="hidden md:flex items-center gap-8">
             {NAV_LINKS.map(l => (
-              <a key={l.href} href={l.href} className="text-sm font-medium transition-colors duration-200" style={{ color: "#667085" }}
-                onMouseEnter={e => (e.currentTarget.style.color = "#34B86D")}
-                onMouseLeave={e => (e.currentTarget.style.color = "#667085")}>
+              <a key={l.href} href={l.href} className="text-sm font-medium transition-colors duration-200" style={{ color: "#8DA3B4" }}
+                onMouseEnter={e => (e.currentTarget.style.color = "#7BD9A1")}
+                onMouseLeave={e => (e.currentTarget.style.color = "#8DA3B4")}>
                 {l.label}
               </a>
             ))}
@@ -82,12 +82,12 @@ export default function Index() {
           </a>
 
           <button className="md:hidden p-2" onClick={() => setMenuOpen(!menuOpen)}>
-            <Icon name={menuOpen ? "X" : "Menu"} size={22} style={{ color: "#1B1F28" }} />
+            <Icon name={menuOpen ? "X" : "Menu"} size={22} style={{ color: "#8DA3B4" }} />
           </button>
         </div>
 
         {menuOpen && (
-          <div className="md:hidden bg-white border-t px-4 py-4 flex flex-col gap-3" style={{ borderColor: "#E8F0EB" }}>
+          <div className="md:hidden border-t px-4 py-4 flex flex-col gap-3" style={{ backgroundColor: "#1B2235", borderColor: "rgba(123,217,161,0.12)" }}>
             {NAV_LINKS.map(l => (
               <a key={l.href} href={l.href} className="font-medium py-1" style={{ color: "#1B1F28" }} onClick={() => setMenuOpen(false)}>
                 {l.label}
@@ -101,116 +101,105 @@ export default function Index() {
       </nav>
 
       {/* ===== HERO ===== */}
-      <section id="home" className="pt-16">
-        <div className="max-w-7xl mx-auto px-4 md:px-8 pt-12 pb-0">
+      <section id="home" className="pt-16" style={{ backgroundColor: "#1B2235" }}>
+        <div className="max-w-7xl mx-auto px-4 md:px-8 pt-10 pb-0">
 
-          {/* Hero card — светлая большая карточка */}
-          <div className="rounded-3xl overflow-hidden relative" style={{ backgroundColor: "#FFFFFF", border: "1px solid #E8F0EB" }}>
-            <div className="grid md:grid-cols-2 gap-0 min-h-[520px]">
+          {/* Hero card — тёмная карточка */}
+          <div className="rounded-3xl overflow-hidden relative" style={{ backgroundColor: "#232D45", border: "1px solid rgba(123,217,161,0.15)" }}>
+            <div className="grid md:grid-cols-2 gap-0 min-h-[500px]">
 
               {/* LEFT: текст */}
-              <div className="p-10 md:p-14 flex flex-col justify-between">
-                <div>
-                  {/* Super-label */}
-                  <p className="text-xs font-semibold uppercase tracking-widest mb-6" style={{ color: "#98A2B3" }}>
-                    #1 среди digital-агентств региона
-                  </p>
+              <div className="p-10 md:p-14 flex flex-col justify-center">
+                <p className="text-xs font-bold uppercase tracking-widest mb-6" style={{ color: "#7BD9A1" }}>
+                  #1 среди digital-агентств страны
+                </p>
 
-                  <h1 className="font-display text-4xl md:text-5xl font-bold leading-tight mb-5" style={{ color: "#1B1F28" }}>
-                    NOVATECH — агентство,<br />
-                    которое показывает,<br />
-                    <span style={{ color: "#34B86D" }}>где бизнес теряет<br />клиентов и деньги</span>
-                  </h1>
+                <h1 className="font-display text-4xl md:text-5xl font-bold leading-tight mb-5 text-white">
+                  NOVATECH — агентство,<br />
+                  которое показывает,<br />
+                  <span style={{ color: "#7BD9A1" }}>где бизнес теряет<br />клиентов и деньги</span>
+                </h1>
 
-                  <p className="text-base leading-relaxed mb-10" style={{ color: "#667085", maxWidth: "420px" }}>
-                    От первого обращения до повторной продажи — сайты, аналитика, автоматизация и AI-инструменты в одной экосистеме.
-                  </p>
+                <p className="text-base leading-relaxed mb-10" style={{ color: "#8DA3B4", maxWidth: "420px" }}>
+                  От первого обращения до повторной продажи — сайты, аналитика, автоматизация и AI-инструменты в одной экосистеме.
+                </p>
 
-                  {/* CTA buttons */}
-                  <div className="flex flex-wrap items-center gap-4">
-                    <a href="#contacts"
-                      className="inline-flex items-center gap-2 text-white font-bold px-7 py-3.5 rounded-xl text-base transition-all duration-200"
-                      style={{ backgroundColor: "#34B86D" }}
-                      onMouseEnter={e => (e.currentTarget.style.backgroundColor = "#249454")}
-                      onMouseLeave={e => (e.currentTarget.style.backgroundColor = "#34B86D")}>
-                      Демо на 7 дней
-                      <Icon name="ArrowRight" size={18} />
-                    </a>
-                    <a href="#portfolio"
-                      className="inline-flex items-center gap-2 font-semibold text-base transition-colors duration-200"
-                      style={{ color: "#667085" }}
-                      onMouseEnter={e => (e.currentTarget.style.color = "#34B86D")}
-                      onMouseLeave={e => (e.currentTarget.style.color = "#667085")}>
-                      Где клиент теряет деньги
-                      <Icon name="ArrowRight" size={16} />
-                    </a>
-                  </div>
-                </div>
-
-                {/* Trust badges bottom */}
-                <div className="flex flex-col gap-3 mt-12">
-                  <div className="flex items-center gap-3 p-3 rounded-xl" style={{ backgroundColor: "#F7FAF8", border: "1px solid #E8F0EB" }}>
-                    <div className="w-9 h-9 rounded-lg flex items-center justify-center flex-shrink-0" style={{ backgroundColor: "#EEF8F2" }}>
-                      <Icon name="Globe" size={18} style={{ color: "#34B86D" }} />
-                    </div>
-                    <div>
-                      <div className="text-xs font-semibold" style={{ color: "#1B1F28" }}>Интеграция с ведущими платформами</div>
-                      <div className="text-xs" style={{ color: "#98A2B3" }}>Разработано в России</div>
-                    </div>
-                  </div>
-                  <div className="flex items-center gap-3 p-3 rounded-xl" style={{ backgroundColor: "#F7FAF8", border: "1px solid #E8F0EB" }}>
-                    <div className="w-9 h-9 rounded-lg flex items-center justify-center flex-shrink-0" style={{ backgroundColor: "#DCE6F2" }}>
-                      <Icon name="Award" size={18} style={{ color: "#7C98B6" }} />
-                    </div>
-                    <div>
-                      <div className="text-xs font-semibold" style={{ color: "#1B1F28" }}>Резидент Сколково</div>
-                      <div className="text-xs" style={{ color: "#98A2B3" }}>Инновационный проект 2025</div>
-                    </div>
-                  </div>
+                <div className="flex flex-wrap items-center gap-4">
+                  <a href="#contacts"
+                    className="inline-flex items-center gap-2 text-white font-bold px-7 py-3.5 rounded-xl text-base transition-all duration-200"
+                    style={{ backgroundColor: "#34B86D" }}
+                    onMouseEnter={e => (e.currentTarget.style.backgroundColor = "#249454")}
+                    onMouseLeave={e => (e.currentTarget.style.backgroundColor = "#34B86D")}>
+                    Демо на 7 дней
+                    <Icon name="ArrowRight" size={18} />
+                  </a>
+                  <a href="#about"
+                    className="inline-flex items-center gap-2 font-semibold text-base transition-colors duration-200"
+                    style={{ color: "#7BD9A1" }}
+                    onMouseEnter={e => (e.currentTarget.style.color = "#FFFFFF")}
+                    onMouseLeave={e => (e.currentTarget.style.color = "#7BD9A1")}>
+                    Где клиент теряет деньги
+                    <Icon name="ArrowRight" size={16} />
+                  </a>
                 </div>
               </div>
 
-              {/* RIGHT: diagram illustration */}
-              <div className="relative flex items-center justify-center p-8 md:p-10" style={{ backgroundColor: "#F4FBF7" }}>
-                {/* Background pattern */}
-                <div className="absolute inset-0 opacity-30" style={{
-                  backgroundImage: "radial-gradient(circle at 2px 2px, #7BD9A1 1px, transparent 0)",
-                  backgroundSize: "28px 28px"
-                }} />
+              {/* RIGHT: ecosystem diagram */}
+              <div className="relative flex items-center justify-center p-8 md:p-10">
+                <div className="w-full max-w-sm">
+                  {/* Diagram */}
+                  <div className="rounded-2xl overflow-hidden" style={{ border: "1px solid rgba(123,217,161,0.2)", backgroundColor: "#1B2235" }}>
+                    {/* Header */}
+                    <div className="px-5 py-3 flex items-center gap-2" style={{ borderBottom: "1px solid rgba(123,217,161,0.1)" }}>
+                      <div className="w-2.5 h-2.5 rounded-full" style={{ backgroundColor: "#E85D75" }} />
+                      <div className="w-2.5 h-2.5 rounded-full" style={{ backgroundColor: "#F59E0B" }} />
+                      <div className="w-2.5 h-2.5 rounded-full" style={{ backgroundColor: "#34B86D" }} />
+                      <span className="ml-2 text-xs font-semibold" style={{ color: "#7BD9A1" }}>Экосистема NOVATECH</span>
+                    </div>
 
-                <div className="relative z-10 w-full">
-                  <img
-                    src="https://cdn.poehali.dev/projects/56e2666f-17ee-442b-bfe7-8254b5ffe939/files/4a7928ba-0eb5-42e5-85d5-15161b217ada.jpg"
-                    alt="Platform ecosystem"
-                    className="w-full h-auto rounded-2xl animate-float"
-                    style={{ maxHeight: "400px", objectFit: "cover" }}
-                  />
+                    {/* 4 quadrants */}
+                    <div className="grid grid-cols-2 gap-px p-px" style={{ backgroundColor: "rgba(123,217,161,0.1)" }}>
+                      {[
+                        { color: "#3B82F6", label: "Управление бизнесом", items: ["Платформа", "CRM", "Аналитика"] },
+                        { color: "#34B86D", label: "Аналитика и рост", items: ["Сквозная аналитика", "PDSA-цикл", "Дашборды"] },
+                        { color: "#8B5CF6", label: "Коммуникации", items: ["ИИ-ассистент", "Воронки", "Уведомления"] },
+                        { color: "#F59E0B", label: "Интеграции", items: ["API / ЭДО", "Телефония", "Онлайн-касса"] },
+                      ].map(q => (
+                        <div key={q.label} className="p-4" style={{ backgroundColor: "#232D45" }}>
+                          <div className="flex items-center gap-2 mb-2">
+                            <div className="w-2 h-2 rounded-full flex-shrink-0" style={{ backgroundColor: q.color }} />
+                            <span className="text-xs font-bold text-white leading-tight">{q.label}</span>
+                          </div>
+                          {q.items.map(item => (
+                            <div key={item} className="flex items-center gap-1.5 mt-1">
+                              <Icon name="Check" size={10} style={{ color: q.color }} />
+                              <span className="text-xs" style={{ color: "#8DA3B4" }}>{item}</span>
+                            </div>
+                          ))}
+                        </div>
+                      ))}
+                    </div>
 
-                  {/* Floating stat cards */}
-                  <div className="absolute top-4 left-2 bg-white rounded-xl px-4 py-2.5 shadow-lg" style={{ border: "1px solid #E8F0EB" }}>
-                    <div className="font-display text-xl font-bold" style={{ color: "#34B86D" }}>+127%</div>
-                    <div className="text-xs" style={{ color: "#98A2B3" }}>рост конверсии</div>
-                  </div>
-
-                  <div className="absolute bottom-4 right-2 bg-white rounded-xl px-4 py-2.5 shadow-lg" style={{ border: "1px solid #E8F0EB" }}>
-                    <div className="font-display text-xl font-bold" style={{ color: "#1B1F28" }}>150+</div>
-                    <div className="text-xs" style={{ color: "#98A2B3" }}>клиентов</div>
+                    {/* Footer */}
+                    <div className="px-5 py-3 text-center" style={{ borderTop: "1px solid rgba(123,217,161,0.1)" }}>
+                      <span className="text-xs font-semibold" style={{ color: "#8DA3B4" }}>Технологическая база — микросервисы</span>
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
           </div>
 
-          {/* Trust bar — 4 карточки */}
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-3 mt-3 mb-12">
+          {/* Trust bar */}
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-3 mt-3 mb-0 pb-10">
             {TRUST_BADGES.map((b) => (
               <div key={b.label}
-                className="flex items-center gap-3 bg-white rounded-2xl px-5 py-4 transition-shadow duration-200 hover:shadow-md"
-                style={{ border: "1px solid #E8F0EB" }}>
-                <div className="w-9 h-9 rounded-lg flex items-center justify-center flex-shrink-0" style={{ backgroundColor: "#EEF8F2" }}>
-                  <Icon name={b.icon} size={18} style={{ color: "#34B86D" }} />
+                className="flex items-center gap-3 rounded-2xl px-5 py-4 transition-all duration-200 hover:border-opacity-40"
+                style={{ backgroundColor: "#232D45", border: "1px solid rgba(123,217,161,0.15)" }}>
+                <div className="w-9 h-9 rounded-lg flex items-center justify-center flex-shrink-0" style={{ backgroundColor: "rgba(52,184,109,0.12)" }}>
+                  <Icon name={b.icon} size={18} style={{ color: "#7BD9A1" }} />
                 </div>
-                <span className="font-semibold text-sm" style={{ color: "#1B1F28" }}>{b.label}</span>
+                <span className="font-semibold text-sm text-white">{b.label}</span>
               </div>
             ))}
           </div>
